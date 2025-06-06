@@ -1,16 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const upload = require("../middleware/multer");
-const foodItemController = require("../controllers/foodItemController");
+const {createFoodItem,getAllFoodItems,getFoodItemById,updateFoodItem,deleteFoodItem} = require("../controllers/foodItemController");
 
-router.post("/", upload.single("image"), foodItemController.createFoodItem);
+router.post("/", upload.single("image"),createFoodItem);
 
-router.get("/", foodItemController.getAllFoodItems);
+router.get("/",getAllFoodItems);
 
-router.get("/:id", foodItemController.getFoodItemById);
+router.get("/:id",getFoodItemById);
 
-router.put("/:id", upload.single("image"), foodItemController.updateFoodItem);
+router.put("/:id", upload.single("image"),updateFoodItem);
 
-router.delete("/:id", foodItemController.deleteFoodItem);
+router.delete("/:id",deleteFoodItem);
 
 module.exports = router;
